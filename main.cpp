@@ -1,90 +1,78 @@
 #include <iostream>
-#include <filesystem>
-#include <fstream>
 #include "miniGit.hpp"
-#include <string>
+#include <filesystem>
 
-using namespace std;
 namespace fs = std::filesystem;
 
-miniGit::miniGit()
+using namespace std;
+
+
+void menuDisplay()
 {
-    fs::remove_all(".minigit");
-    fs::create_directory(".minigit");
+    cout << "==============MAIN MENU==================" << endl;
+    cout << "Choose an option from the following menu:" << endl;
+    cout << endl;
+    cout << "1.Initialize git system." << endl;
+    cout << "2. Add files to the curret commit." << endl;
+    cout << "3. Remove files to the crrent commit." << endl;
+    cout << "4. Commit changes." << endl;
+    cout << "5. Checkout specific version based on unique commit number." << endl;
+    cout << "6. Exit program." << endl;
+    cout << endl;
 }
 
-miniGit::~miniGit()
-{
-    fs::remove_all(".minigit");
-}
-
-// This function does two things
-// 1. Create a sub-directory 
-void miniGit::initialize()
+int main(int argc, char* argv[])
 {
 
-}
+    int choice;
+    string tobedeleted = "";
 
-void miniGit::addFile()
-{
-
-}
-
-void miniGit::removeFile(string filename)
-{
-    
-}
-
-
-// This function copies contents from one file into another 
-void copyfile(string file1, string file2)
-{
-    ifstream f1(file1);
-    ofstream f2(file2);
-    char c1, c2;
-    bool flag = true;
-
-    if (!f1.is_open())
+    do
     {
-        cout << "The input file is not open!\n";
-        return;
-    }
+        menuDisplay();
+        cin >> choice;
 
-    if (!f2.is_open())
-    {
-        cout << "Could not open output file\n";
-        return;
-    }
-
-    while(true)
-    {
-        c1=f1.get();
-
-        if (c1 = EOF)
+        switch(choice)
         {
-            break;
+            case 1:
+                cout << "Not yet implemented." << endl;
+                break;
+
+            case 2:
+                
+                cout << "Not yet implemented" << endl;
+                break;
+
+            case 3:
+                cout << "Not yet implemented" << endl;
+                cout << "Enter the name of the file you yould like to delete: ";
+                cin >> tobedeleted;
+
+
+                break;
+
+            case 4:
+                cout << "Not yet implemented" << endl;
+                break;
+
+            case 5:
+                cout << "Not yet implemented" << endl;
+                break;
+
+            case 6:
+                cout << "The program will now exit!!" << endl;
+                return 0;
+
+            default:
+                cout << "YOU ENTERED AN INVALID OPTION!!\n";
+                cout << "Please enter a valid option." << endl;
+                cout << endl;
+                break;
         }
+    }while(choice != 6);
 
-        f2 << c1;
-    }
 
-    f1.close();
-    f2.close();
-}
 
-// This function checks if two files have the same contents
-bool isequal(string file1, string file2)
-{
-    ifstream f1(file1), f2(file2);
-    char c1, c2;
-    
-    if (!f1.is_open() && !f2.is_open())
-    {
-        return true;
-    }
 
-    if (!f1.is_open() || !f2.is_open())
-    {
-        return false;
-    }
+    return 0;
 }
